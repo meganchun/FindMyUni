@@ -1,0 +1,17 @@
+University of Toronto - St. George Campus,27 King's College Circle Toronto Ontario M5S 1A1 Canada,416-978-2011,https://www.utoronto.ca
+University of Toronto - Scarborough Campus,1265 Military Trail Scarborough ON M1C 1A4,416-287-8872,https://www.utoronto.ca
+University of Toronto - Mississauga Campus,3359 Mississauga Rd Mississauga ON L5L 1C6,905-569-4455,https://www.utoronto.ca
+Toronto Metropolitan University,350 Victoria St Toronto ON M5B 2K3,416-979-5000,https://www.torontomu.ca
+Western University,1151 Richmond St London ON N6A 3K7,519-661-2111,https://www.uwo.ca/index.html
+University of Waterloo,200 University Ave W Waterloo ON N2L 3G1,519-888-4567,https://uwaterloo.ca
+University of Waterloo - Cambridge Architecture Campus,7 Melville St S Cambridge ON N1S 2H4,519-888-4567 ext. 27602,https://uwaterloo.ca
+Queen's University,99 University Ave Kingston ON K7L 3N6,613-533-2000,https://www.queensu.ca
+Brock University,1812 Sir Isaac Brock Way St. Catharines ON L2S 3A1,905-688-5550,https://brocku.ca
+University of Guelph,50 Stone Rd E Guelph ON N1G 2W1,519-824-4120,https://www.uoguelph.ca
+Sir Wilfrid Laurier University - Waterloo Campus,75 University Ave W Waterloo ON N2L 3C5,519-884-1970,https://www.wlu.ca
+Sir Wilfrid Laurier University - Brantford Campus,73 George St Brantford ON N3T 2Y3,519-756-8228,https://www.wlu.ca
+McMaster University,1280 Main Street West Hamilton Ontario L8S 4L8,905-525-9140,https://www.mcmaster.ca
+University of Windsor,401 Sunset Ave Windsor ON N9B 3P4,519-253-3000,https://www.uwindsor.ca
+York University - Glendon Campus,2275 Bayview Ave North York ON M4N 3M6,416-487-6710,http://www.yorku.ca
+York University - Keele Campus,198 York Blvd North York ON M3J 2S5,416-736-2100,http://www.yorku.ca
+Ontario Tech University,2000 Simcoe St N Oshawa ON L1G 0C5,905-721-8668,https://ontariotechu.ca

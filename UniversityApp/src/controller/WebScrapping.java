@@ -47,15 +47,15 @@ public class WebScrapping {
 	public WebScrapping() throws HttpStatusException, IOException {
 		
 		
-		getDataUni();
+		//getDataUni();
 		//getDataEvents();
 		
-		//getDataProgram();
+		getDataProgram();
 		
-		//addToFile("data/compSciPrograms.txt", compSciPrograms);
-		///addToFile("data/engPrograms.txt", engPrograms);
-		//addToFile("data/mathPrograms.txt", mathPrograms);
-		//addToFile("data/sciencePrograms.txt", sciPrograms);
+		addToFile("data/compSciPrograms.txt", compSciPrograms);
+		addToFile("data/engPrograms.txt", engPrograms);
+		addToFile("data/mathPrograms.txt", mathPrograms);
+		addToFile("data/sciencePrograms.txt", sciPrograms);
 	}
 	public static void getDataUni() throws IOException, HttpStatusException {
 		
@@ -177,7 +177,7 @@ public class WebScrapping {
 	public static void getDataProgram() throws IOException, HttpStatusException {
 
 
-		for (int num = 4001; num <= 5000; num++) {
+		for (int num = 7000; num <= 8000; num++) {
 
 			try {
 
@@ -443,8 +443,7 @@ public class WebScrapping {
 		}
 		BufferedWriter br = new BufferedWriter(fr);
 		try {
-			
-			System.out.println("okay");
+		
 			//loop through all the programs for each field
 			for (int i = 0; i < programList.size(); i++) {
 				

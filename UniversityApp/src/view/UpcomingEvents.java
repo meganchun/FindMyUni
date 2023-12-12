@@ -60,9 +60,6 @@ public class UpcomingEvents extends JPanel implements ActionListener {
 			
 			c.weightx = 0.5;
 			
-		
-			
-			
 			c.gridx = 0;  //set the alignment
 			c.gridy = 0;  //set the alignment
 			c.gridwidth = 2;

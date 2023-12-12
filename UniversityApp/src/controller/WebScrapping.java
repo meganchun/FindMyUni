@@ -128,30 +128,36 @@ public class WebScrapping {
 			String timeStr;
 			String dateStr;
 		
-			
 			//loop through all events
-			for (int i = 0; i < 4; i++) {
+			for (int i = 0; i < universityName.size(); i++) {
 	
-				if (time.get(i).text().equals("View event details")) 
-					timeStr = "N/A";
-				else 
-					timeStr = time.get(i).text();
+				//if there are not already four events saved
+				if (upcomingEvents[3][0] == null) {
+					
+					if (time.get(i).text().equals("View event details")) 
+						timeStr = "N/A";
+					else 
+						timeStr = time.get(i).text();
+					
+					if (date.get(i).text().contains("Multiple dates")) {
+						dateStr = "Multiple dates";
+						timeStr = "N/A";
+					}
+					else
+						dateStr = date.get(i).text();
 				
-				if (date.get(i).text().contains("Multiple dates")) {
-					dateStr = "Multiple dates";
-					timeStr = "N/A";
+					upcomingEvents[i][0] = universityName.get(i).text(); //university name
+					upcomingEvents[i][1] = eventName.get(i).text(); //event name
+					upcomingEvents[i][2] = dateStr; //date
+					upcomingEvents[i][3] = timeStr;
+					upcomingEvents[i][4] = eventName.get(i).attr("href"); //link to even
 				}
-				else
-					dateStr = date.get(i).text();
-			
-				upcomingEvents[i][0] = universityName.get(i).text(); //university name
-				upcomingEvents[i][1] = eventName.get(i).text(); //event name
-				upcomingEvents[i][2] = dateStr; //date
-				upcomingEvents[i][3] = timeStr;
-				upcomingEvents[i][4] = eventName.get(i).attr("href"); //link to even
-				
+				else {
+					break;
+				}
 			}
 			
+				
 			for (int i = 0; i < 4; i++) {
 				for (int j = 0; j < 5; j++) {
 					
@@ -177,7 +183,7 @@ public class WebScrapping {
 	public static void getDataProgram() throws IOException, HttpStatusException {
 
 
-		for (int num = 7000; num <= 8000; num++) {
+		for (int num = 6000; num < 8000; num++) {
 
 			try {
 
@@ -211,6 +217,7 @@ public class WebScrapping {
 				String address = null;
 				String programLink = null;
 				String prerequisites = "";
+				String programNum = Integer.toString(num);
 				//double cost = 0;
 						
 			
@@ -337,7 +344,7 @@ public class WebScrapping {
 						
 						//System.out.println(option1);
 						//store the information into a string array {program name, university name, grade range}
-						String[] info = {programName, universityName, gradeRange, degree, address, programLink, prerequisites}; 
+						String[] info = {programNum, programName, universityName, gradeRange, degree, address, programLink, prerequisites}; 
 						if (hasEnoughInfo(info))
 							engPrograms.add(info);
 					}
@@ -345,7 +352,7 @@ public class WebScrapping {
 					else if (degree.indexOf("Science") != -1) {
 						//System.out.println(option1);
 						//store the information into a string array {program name, university name, grade range}
-						String[] info = {programName, universityName, gradeRange, degree, address, programLink, prerequisites}; 
+						String[] info = {programNum, programName, universityName, gradeRange, degree, address, programLink, prerequisites}; 
 						if (hasEnoughInfo(info))
 							sciPrograms.add(info);
 					}
@@ -355,7 +362,7 @@ public class WebScrapping {
 						
 						//System.out.println(option1);
 						//store the information into a string array {program name, university name, grade range}
-						String[] info = {programName, universityName, gradeRange, degree, address, programLink, prerequisites}; 
+						String[] info = {programNum, programName, universityName, gradeRange, degree, address, programLink, prerequisites}; 
 						if (hasEnoughInfo(info))
 							compSciPrograms.add(info);
 					}
@@ -364,7 +371,7 @@ public class WebScrapping {
 						//System.out.println(option1);
 						
 						//store the information into a string array {program name, university name, grade range}
-						String[] info = {programName, universityName, gradeRange, degree, address, programLink, prerequisites}; 
+						String[] info = {programNum, programName, universityName, gradeRange, degree, address, programLink, prerequisites}; 
 						if (hasEnoughInfo(info))
 							mathPrograms.add(info);
 					}

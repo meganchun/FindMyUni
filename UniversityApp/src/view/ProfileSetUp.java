@@ -262,12 +262,15 @@ public class ProfileSetUp extends JFrame implements ActionListener, ItemListener
 			
 			
 			int fieldNum = -1;
+			String[] fieldFileName = {"engPrograms.txt","compSciPrograms.txt","sciencePrograms","mathPrograms"};
+			String fieldType = null;
 			
 			//determine which field was clicked 
 			for (int i = 0; i < 4; i++) {
 				
 				if (fieldsBtns[i].isSelected()) {
 					fieldNum = i;
+					fieldType = fieldFileName[i];
 				}
 			}
 			
@@ -276,7 +279,7 @@ public class ProfileSetUp extends JFrame implements ActionListener, ItemListener
 		
 				User newUser = new User(username, password, firstNameField.getText(), lastNameField.getText(), emailField.getText(),
 						addressFields[0].getText(),addressFields[1].getText(),addressFields[2].getText(),addressFields[3].getText(),
-						typesOfFields[fieldNum]);
+						fieldType);
 				
 				try {
 					new Homepage(newUser);

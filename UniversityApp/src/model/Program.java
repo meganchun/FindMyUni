@@ -5,6 +5,7 @@ import java.util.List;
 public class Program {
 
 	//Instance variables
+	int programNum;
 	String name;
 	String university;
 	String address;
@@ -14,9 +15,10 @@ public class Program {
 	double cost;
 	
 	//Constructor
-	public Program(String name, String university, String address,
+	public Program(int programNum, String name, String university, String address,
 			String programLink, int gradeRequirement, List<String> prerequisites) {
 		super();
+		this.programNum = programNum;
 		this.name = name;
 		this.university = university;
 		this.address = address;
@@ -26,6 +28,14 @@ public class Program {
 	}
 
 	//GETTERS AND SETTERS
+
+	public int getProgramNum() {
+		return programNum;
+	}
+
+	public void setProgramNum(int programNum) {
+		this.programNum = programNum;
+	}
 	public String getName() {
 		return name;
 	}

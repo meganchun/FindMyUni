@@ -24,6 +24,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import controller.FontClass;
+import controller.GeneralSearchController;
 
 public class MenuBar extends JPanel implements KeyListener, ActionListener {
 
@@ -116,7 +117,14 @@ public class MenuBar extends JPanel implements KeyListener, ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		
+		if(e.getSource() == browseBtn) {
+			
+			new GeneralSearchController();
+			
+			
+		}
+		
 		
 	}
 	

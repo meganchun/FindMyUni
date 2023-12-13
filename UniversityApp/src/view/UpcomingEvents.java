@@ -67,8 +67,10 @@ public class UpcomingEvents extends JPanel implements ActionListener {
 			c.fill = GridBagConstraints.HORIZONTAL;
 			c.anchor = GridBagConstraints.PAGE_START; //top of space
 			c.insets = new Insets(16,16,0,16); //add padding to the right
+			
+			
 			//JLabel img = new JLabel(new ImageIcon("images/tempImage.png"));
-			BufferedImage bufferedImage = ImageIO.read(new File("C:\\images/uniCampus/"+upcomingEvents[index][0]+".jpeg"));
+			BufferedImage bufferedImage = ImageIO.read(new File("images/uniCampus/"+upcomingEvents[index][0]+".jpeg"));
 			Image image = bufferedImage.getScaledInstance(130, 86, Image.SCALE_DEFAULT);
 			ImageIcon icon = new ImageIcon(image);
 			JLabel uniImg = new JLabel(icon);

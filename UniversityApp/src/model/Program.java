@@ -1,41 +1,38 @@
 package model;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Program {
 
 	//Instance variables
-	int programNum;
 	String name;
 	String university;
 	String address;
+	String degree;
+	int programNum;
+
 	String programLink;
-	int gradeRequirement;
-	List<String> prerequisites;
+	String gradeRequirement;
+	String[] prerequisites;
+	
 	double cost;
 	
 	//Constructor
-	public Program(int programNum, String name, String university, String address,
-			String programLink, int gradeRequirement, List<String> prerequisites) {
+	public Program(int programNum, String name, String university, String gradeRequirement, String degree, String address,
+			String programLink, String[] courses) {
 		super();
 		this.programNum = programNum;
 		this.name = name;
 		this.university = university;
 		this.address = address;
 		this.programLink = programLink;
+		this.degree = degree;
 		this.gradeRequirement = gradeRequirement;
-		this.prerequisites = prerequisites;
+		this.prerequisites = courses;
 	}
 
 	//GETTERS AND SETTERS
-
-	public int getProgramNum() {
-		return programNum;
-	}
-
-	public void setProgramNum(int programNum) {
-		this.programNum = programNum;
-	}
 	public String getName() {
 		return name;
 	}
@@ -52,14 +49,6 @@ public class Program {
 		this.university = university;
 	}
 
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
 	public String getProgramLink() {
 		return programLink;
 	}
@@ -68,19 +57,19 @@ public class Program {
 		this.programLink = programLink;
 	}
 
-	public int getGradeRequirement() {
+	public String getGradeRequirement() {
 		return gradeRequirement;
 	}
 
-	public void setGradeRequirement(int gradeRequirement) {
+	public void setGradeRequirement(String gradeRequirement) {
 		this.gradeRequirement = gradeRequirement;
 	}
 
-	public List<String> getPrerequisites() {
+	public String[] getPrerequisites() {
 		return prerequisites;
 	}
 
-	public void setPrerequisites(List<String> prerequisites) {
+	public void setPrerequisites(String[] prerequisites) {
 		this.prerequisites = prerequisites;
 	}
 
@@ -92,7 +81,24 @@ public class Program {
 		this.cost = cost;
 	}
 	
+	public String getDegree() {
+		return degree;
+	}
+
+	public void setDegree(String degree) {
+		this.degree = degree;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
 	
-	
-	
+	public int getProgramNum() {
+		return programNum;
+	}
+
+	public void setProgramNum(int programNum) {
+		this.programNum = programNum;
+	}
+
 }

@@ -1,11 +1,4 @@
 	package controller;
-	
-	
-	//File editing and reading
-	//https://stackoverflow.com/questions/73788807/check-if-string-exists-in-text-file
-	//https://www.beginwithjava.com/java/file-input-output/writing-text-file.html#:~:text=The%20simplest%20way%20to%20write,oceans%20to%20the%20text%20file.
-	//https://www.tutorialspoint.com/how-to-delete-a-string-inside-a-file-txt-in-java
-	
 	import java.awt.event.ActionEvent;
 	import java.awt.event.ActionListener;
 	import java.io.BufferedReader;
@@ -16,8 +9,10 @@
 	import java.io.IOException;
 	import java.io.PrintWriter;
 	import java.util.Arrays;
-	import java.util.Comparator;
-	import java.util.Scanner;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Scanner;
 	
 	import javax.swing.ImageIcon;
 	
@@ -28,15 +23,30 @@
 	import view.GeneralSearchFrame;
 	import view.SortByFrame;
 	
+	
+	//File editing and reading
+		//https://stackoverflow.com/questions/73788807/check-if-string-exists-in-text-file
+		//https://www.beginwithjava.com/java/file-input-output/writing-text-file.html#:~:text=The%20simplest%20way%20to%20write,oceans%20to%20the%20text%20file.
+		//https://www.tutorialspoint.com/how-to-delete-a-string-inside-a-file-txt-in-java
+	
+	
+	
+	//This class controls any actions or performs any necessary updates in the general search frame. 
+	
+	
 	public class GeneralSearchController implements ActionListener {
+		
 			
+		//Call the general search frame class to load the basic frame.
 		private GeneralSearchFrame frame = new GeneralSearchFrame();
+		
 		
 		public GeneralSearchController(User user) {
 			
 			//Method to add action listeners to all the GUI swing objects:
 			addActionListeners();
 			
+			//Read the user's profile to update any necessary programs.
 			readUsersProfile();
 					
 		}
@@ -62,20 +72,23 @@
 			
 		}
 		
+	
+	
+		//This method checks if the current program is already favourited in the user's profile.
 		public boolean checkProgram(String check) throws FileNotFoundException {
 			
 			
 		    BufferedReader reader = new BufferedReader(new FileReader("data/hi"));
 		    Scanner fileScanner = new Scanner(reader);
-		 
 		    boolean flag = false;
 		    
-		    //Continue reading whule the file has lines:
+		    
+		    //Continue reading while the file has lines:
 		    while (fileScanner.hasNextLine()) {
 		    	
-		    	fileScanner.useDelimiter("\r\n");
+		    	fileScanner.useDelimiter(",|\r\n");
 		 
-		        String line = fileScanner.next();
+		        String line = fileScanner.nextLine();
 		        
 		        //If the current line has the program, set the flag to true and break out of the loop
 		        if (line.contains(check)) {
@@ -86,18 +99,20 @@
 		        	flag = false;
 		        }
 		    }
-		    	    
+		    	
 		    return flag;
 	
 		}
 		
 	
+		
+		//This method rewrites the user's profile (adds a program if it isn't favourited, remove if it is)
 		private void rewriteUsersProfile(String program) {
 							
 			try {
 				
 				//Check if the program already exists in the user's profile.
-				
+				 
 				
 				//If it doesn't:
 				if(!checkProgram(program)) {
@@ -107,7 +122,7 @@
 						
 						FileWriter fw = new FileWriter("data/hi",true);
 						PrintWriter out = new PrintWriter(fw);
-				        out.println(program);
+				        out.print(program + ",");
 				        out.close();
 				       
 						
@@ -123,9 +138,8 @@
 						
 						 String filePath = "data/hi";
 					      String result = fileToString(filePath);
-					      System.out.println("Contents of the file: "+result);
 					      //Replacing the word with desired one
-					      result = result.replaceAll("\b" + program + "\b", "");
+					      result = result.replaceAll(program+",", "");
 					      //Rewriting the contents of the file
 					      PrintWriter writer = new PrintWriter(new File(filePath));
 					      writer.append(result);
@@ -139,8 +153,6 @@
 						e.printStackTrace();
 					}
 	
-	
-					System.out.println("already exists");
 					
 				}
 			} catch (FileNotFoundException e) {
@@ -149,6 +161,8 @@
 			
 		}
 	
+		
+		//This method converts the file to string
 		private String fileToString(String filePath) throws FileNotFoundException {
 			 String input = null;
 		      Scanner sc = new Scanner(new File(filePath));
@@ -160,37 +174,42 @@
 		      return sb.toString();
 		}
 
+		
+		//This method reads the user's profile for any previous favourited programs
 		private void readUsersProfile() {
-			
-			
-			String ignore = "";
-			String hi = "";
+					
+			String readMe = "";
 			
 			try {
-	
-				Scanner accountsFile = new Scanner(new File("data/accounts.txt"));
 				
-				accountsFile.useDelimiter(",|\r\n");
-													
-				// Iterate through all programs 
-				for (int i = 0; i < 1; i++) {
-					
-					for(int f = 0; f < 9; f++) {
-					ignore = accountsFile.next();
-		
-					}
-					
-					hi = accountsFile.next();
-									
-			
-				}			
+				readMe = fileToString("data/hi");
 				
-				System.out.println(hi);
 				
-			} catch (FileNotFoundException e) { // for errors or if there is no input
-				System.out.println("File Error");
+				readMe = readMe.substring(0, readMe.length() - 1);
+								
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
 			}
 			
+			  // Declaring an empty string array
+		    String[] arr = null;
+		    
+		    // Converting using String.split() method with whitespace as a delimiter
+		    arr = readMe.split(",");
+		    
+		    // Printing the converted string array
+		    for (int i = 0; i < arr.length; i++) {
+		    	
+		    	for(ProgramPanel currentProgram : getFrame().getPrograms()) {
+					
+					if(Integer.toString(currentProgram.getProgramNum()).equals(arr[i])) {
+													
+						currentProgram.getFavouriteButton().setIcon(new ImageIcon("images/favouritetrue.png"));
+						currentProgram.setFavourite(true);
+					}
+		    					
+		    	}
+		    }
 		}
 	
 		@Override
@@ -240,6 +259,18 @@
 					
 					updateFrame();
 				}
+				
+				
+				else if(sortByOption == "Favourites") {
+					
+					
+					
+					ProgramPanel[] items = getFrame().getPrograms();
+					 
+					Collections.sort(items);
+				}
+				
+				
 	
 			}
 			
@@ -262,7 +293,7 @@
 					
 					//Add the program to the user's profile.
 						
-					rewriteUsersProfile(currentProgram.getProgName());
+					rewriteUsersProfile(Integer.toString(currentProgram.getProgramNum()));
 					
 					
 				}

@@ -118,19 +118,18 @@
 					
 				//If it already exists, remove it.
 				} else {
-					
-					File file = new File("data/hi");
-					
+										
 					try {
-						File temp = File.createTempFile("file", ".txt", file.getParentFile());
 						
-						String charset = "UTF-8";
-						
-						String delete = program;
-											
-						BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), charset));
-						
-						PrintWriter writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream(temp), charset));
+						 String filePath = "data/hi";
+					      String result = fileToString(filePath);
+					      System.out.println("Contents of the file: "+result);
+					      //Replacing the word with desired one
+					      result = result.replaceAll("\b" + program + "\b", "");
+					      //Rewriting the contents of the file
+					      PrintWriter writer = new PrintWriter(new File(filePath));
+					      writer.append(result);
+					      writer.flush();
 	
 	
 	
@@ -150,6 +149,17 @@
 			
 		}
 	
+		private String fileToString(String filePath) throws FileNotFoundException {
+			 String input = null;
+		      Scanner sc = new Scanner(new File(filePath));
+		      StringBuffer sb = new StringBuffer();
+		      while (sc.hasNextLine()) {
+		         input = sc.nextLine();
+		         sb.append(input);
+		      }
+		      return sb.toString();
+		}
+
 		private void readUsersProfile() {
 			
 			
@@ -311,7 +321,3 @@
 	
 	
 	}
-
-
-
-

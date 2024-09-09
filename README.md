@@ -20,7 +20,7 @@ through a unique login portal. Stay updated with live events tailored to your fa
   - **Live Web Scraping:** Events related to your favorite schools are continuously updated via live web scraping.
   - **Tailored Notifications:** Receive notifications about events and opportunities aligned with your favorited schools.
 
-- **Web Scraping and Data Integration 🌐:**
+- **🌐 Web Scraping and Data Integration :**
   - **University and Program Data:** Web scraping is used to gather up-to-date information about universities and their programs.
   - **JSON Data Handling:** Data about universities and programs is read and processed from JSON format.
   - **Event Updates:** Live web scraping ensures that event information is always current and relevant.

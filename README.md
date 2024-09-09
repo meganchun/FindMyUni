@@ -27,7 +27,7 @@ through a unique login portal. Stay updated with live events tailored to your fa
 
 ## Technical Details
 
-- Java, Java Swing GUI, JSoup, hashmaps, arrays
+- Java, Java Swing GUI, JSoup, Hashmaps, Arrays, OOP
 
 ![findmyuniCard](https://github.com/user-attachments/assets/27ceeda1-7202-4b64-af66-d1191b51354b)
 
